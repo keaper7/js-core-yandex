@@ -1,17 +1,11 @@
-function createCounters() {
-    var counters = [];
+const user = { name: 'Азрет', skills: ['JS'] };
+const copy = { ...user }; // Поверхностная копия
 
-    for (let i = 0; i < 3; i++) {
-        counters.push(function() {
-            console.log(i);
-        });
-    }
+copy.skills.push('React'); 
 
-    return counters;
-}
+// Оба объекта изменились, потому что skills указывает на один массив в памяти!
+console.log(user.skills); // ['JS', 'React'] — мутация!ƒ
 
-const myCounters = createCounters();
-
-myCounters[0](); // Что выведет?
-myCounters[1](); // Что выведет?
-myCounters[2](); // Что выведет?
+const deepCopy = structuredClone(user);
+console.log(user);
+console.log(deepCopy);
