@@ -1,11 +1,11 @@
-const user = { name: 'Азрет', skills: ['JS'] };
-const copy = { ...user }; // Поверхностная копия
+function addItem(cart, newItem) {
+  return [...cart, newItem];
+}
 
-copy.skills.push('React'); 
+const cart = [
+  { name: 'Ноутбук', price: 800 },
+  { name: 'Мышь', price: 20 }
+];
 
-// Оба объекта изменились, потому что skills указывает на один массив в памяти!
-console.log(user.skills); // ['JS', 'React'] — мутация!ƒ
-
-const deepCopy = structuredClone(user);
-console.log(user);
-console.log(deepCopy);
+console.log(cart);
+console.log(addItem(cart, { name: 'Клавиатура', price: 50 }));
